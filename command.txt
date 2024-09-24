@@ -1,0 +1,12 @@
+//Ffmpeg kurulmalı.
+// mp4'ü png'e çevir.
+ffmpeg -hwaccel cuda -i video1.mp4 -vf "fps=24" frames/output_%05d.png
+
+//pngleri mp4'e çevir
+ffmpeg -framerate 24 -i editedframes/editedoutput_%05d.png -s 1920x1080 -c:v h264_nvenc -preset medium -b:v 10M -pix_fmt yuv420p output.mp4
+
+Requirments:
+google-cloud-translate
+pytorch
+numpy
+easyorc
